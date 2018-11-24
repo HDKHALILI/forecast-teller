@@ -1,0 +1,19 @@
+.sun-details {
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  max-width: 15rem;
+  padding: 0.2rem;
+}
+
+.pipe {
+  color: darken($light-grey, 10%);
+  margin: 0 0.4rem;
+}
+
+.sunrise i {
+  margin-left: 0.5rem;
+}
+.sunset i {
+  margin-right: 0.5rem;
+}

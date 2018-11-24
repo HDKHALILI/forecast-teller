@@ -1,0 +1,15 @@
+.hourly {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  justify-content: center;
+  padding: 0 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.icon-small {
+  color: $glacier-blue;
+  font-size: 2rem;
+}
+

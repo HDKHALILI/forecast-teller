@@ -1,14 +1,16 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import '../icons/css/weather-icons.min.css';
+@import './base/settings';
+@import './base/base';
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+@import './components/app';
+@import './components/header';
+@import './components/search-bar';
+@import './components/results';
+@import './components/forecast';
+@import './components/weather';
+@import './components//sun-details';
+@import './components/info';
+@import './components/extra-details';
+@import './components/now';
+@import './components/hourly';
+@import './components/daily';

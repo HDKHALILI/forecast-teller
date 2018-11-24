@@ -1,0 +1,16 @@
+.now-container {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+.icon, .temperature{
+  font-weight: 300;
+  font-size: 8rem;
+  padding: 1rem;
+  margin: 0 1.2rem;
+}
+
+.icon {
+  color: $glacier-blue;
+}

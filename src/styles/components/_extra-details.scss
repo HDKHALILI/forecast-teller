@@ -1,0 +1,14 @@
+.extra-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.extra-details div {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+.extra-details div i {
+  margin-right: 1rem;
+  color: $glacier-blue;
+}
