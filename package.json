@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "firebase": "^5.5.9",
     "node-sass": "^4.10.0",
     "normalize.css": "^8.0.1",
     "react": "^16.6.3",
@@ -15,7 +16,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "firebase-init": "firebase login && firebase init",
+    "setup-env": "firebase functions:config:set forecast-teller.react_app_dark_sky_key=process.env.REACT_APP_DARK_SKY_API_KEY forecast-teller.react_app_google_key=process.env.REACT_APP_GOOGLE_MAP_API_KEY",
+    "deploy": "npm run build && firebase deploy"
   },
   "eslintConfig": {
     "extends": "react-app"

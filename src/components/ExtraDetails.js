@@ -7,12 +7,11 @@ const ExtraDetails = (props) => {
         <i className="wi wi-raindrops"></i> {props.rain} mm
       </div>
       <div>
-        <i className="wi wi-humidity"></i> {props.humidity}%
-      </div>
-      <div>
         <i className="wi wi-windy"></i> {props.windSpeed} m/s
       </div>
-      
+      <div>
+        <i className="wi wi-humidity"></i> {props.humidity}%
+      </div>
     </div>
   )
 }
