@@ -1,0 +1,56 @@
+.daily {
+  background: #5e96ed;
+  color: #fff;
+  border: 0.1rem solid darken($superlight-grey, 2%);
+  border-radius: 0.8rem;
+  padding: 0 1rem;
+}
+
+.daily-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.daily-header h3 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+}
+
+.daily-name {
+  font-weight: 500;
+  margin-right: 3rem !important;
+}
+
+.daily-main {
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  margin: 3rem 0;
+}
+
+.daily-main h3 {
+  font-weight: 400;
+  font-size: 5rem;
+  margin: 0;
+}
+
+.icon-daily {
+  margin-top: 0.5rem;
+  font-size: 5rem;
+  height: 5rem;
+  vertical-align: middle;
+}
+
+.daily-footer {
+  font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+.misc-details {
+  padding: 0;
+}
+
+.misc-details p {
+  margin: 1rem 0;
+}

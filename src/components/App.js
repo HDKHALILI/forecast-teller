@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 
 import Header from './Header';
 import Results from './Results';
@@ -9,6 +10,7 @@ import getWeather  from '../utils/weather-api';
 class App extends Component {
 
   state = {
+    query: JSON.parse(localStorage.getItem('query')),
     location: '',
     currently: {
       time: '',
@@ -22,26 +24,35 @@ class App extends Component {
       summary: ''
     },
     hourly: [],
-    daily: []
-
+    daily: [],
+    error: ''
   }
 
-  handleSubmit = (location) => {
-    getLatLang(location)
+  componentDidMount() {
+    if (this.state.query) {
+      this.handleSubmit(this.state.query)
+    }
+  }
+
+  handleSubmit = (query) => {
+    this.setState(() => ({searchTerm: query}));
+    getLatLang(query)
       .then((locationData) => {
-        this.setState(() => ( {location: locationData.name} ))
-        getWeather(locationData)
-          .then(({data}) => this.setState(() => {
+        console.log(locationData)
+        if (locationData) {
+          this.setState(() => ({ location: locationData.name }))
+          getWeather(locationData)
+            .then(({ data }) => this.setState(() => {
               const { currently } = data;
 
               const hourly = data.hourly.data
                 .slice(0, 7).map((hourly) => ({
-                    time: hourly.time,
-                    icon: hourly.icon,
-                    temperature: hourly.temperature,
-                    rain: Math.round(hourly.precipIntensity * 100) / 100,
-                    windSpeed: hourly.windSpeed,
-                    humidity: Math.floor(hourly.humidity * 100)
+                  time: hourly.time,
+                  icon: hourly.icon,
+                  temperature: hourly.temperature,
+                  rain: Math.round(hourly.precipIntensity * 100) / 100,
+                  windSpeed: hourly.windSpeed,
+                  humidity: Math.floor(hourly.humidity * 100)
                 }))
 
               const daily = data.daily.data
@@ -56,7 +67,7 @@ class App extends Component {
                   windSpeed: daily.windSpeed,
                   summary: daily.summary
                 }))
-                console.log(daily)
+
               return {
                 currently: {
                   time: currently.time,
@@ -72,18 +83,29 @@ class App extends Component {
                 hourly,
                 daily
               }
-          }))
-          .catch((error) => console.log(error))
-      });
-  }
+            }))
+        } else {
+          this.setState(() => ({
+            location: '',
+            error: "Please enter a valid location",
+            currently: '',
+            hourly: '',
+            daily: ''
 
+          }))
+        }
+      })
+    
+  }
 
   render() {
     return (
-      <div className="container">
-        <Header handleSubmit={this.handleSubmit}/>
-        <Results data={this.state}/>
-      </div>
+      <Router>
+        <div className="container">
+          <Header handleSubmit={this.handleSubmit}/>
+          <Results data={this.state}/>
+        </div>
+      </Router>
     );
   }
 }
