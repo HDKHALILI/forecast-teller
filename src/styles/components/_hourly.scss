@@ -11,5 +11,17 @@
 .icon-small {
   color: $glacier-blue;
   font-size: 2rem;
+  height: 2rem;
 }
 
+@media (max-width: 41.4rem) {
+  .hourly {
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+  }
+
+  .icon-small {
+    margin: 1.2rem 0 0;
+  }
+}

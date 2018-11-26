@@ -6,13 +6,14 @@
 }
 
 .input {
+  // box-sizing: border-box;
   font-size: 1.5rem;
   border: none;
   border-radius: 0.5rem;
   background: #f6f6f6;
   line-height: 1rem;
   padding: 1rem;
-  width: 30rem;
+  width: 100%;
 }
 
 .button {
@@ -23,10 +24,26 @@
   font-size: 1.5rem;
   font-weight: 500;
   padding: 0.9rem 1.5rem;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
+  width: 100%;
 }
 
 .button:hover {
   background: darken($glacier-blue, 15%);
   transition: ease-in-out 200ms background;
+}
+
+@media (max-width: 41.4rem) {
+  .search-bar {
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
+
+  .input, .button {
+    min-width: 30rem;
+  }
+
+  .button {
+    margin: 1rem 0;
+  }
 }

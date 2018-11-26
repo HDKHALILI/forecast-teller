@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './Header';
 import Results from './Results';
@@ -25,20 +25,20 @@ class App extends Component {
     },
     hourly: [],
     daily: [],
-    error: ''
+    error: '',
+    loading: true
   }
 
   componentDidMount() {
     if (this.state.query) {
       this.handleSubmit(this.state.query)
-    }
+    } 
   }
 
   handleSubmit = (query) => {
     this.setState(() => ({searchTerm: query}));
     getLatLang(query)
       .then((locationData) => {
-        console.log(locationData)
         if (locationData) {
           this.setState(() => ({ location: locationData.name }))
           getWeather(locationData)
@@ -81,7 +81,7 @@ class App extends Component {
                   sunset: data.daily.data[0].sunsetTime
                 },
                 hourly,
-                daily
+                daily,
               }
             }))
         } else {
@@ -90,7 +90,8 @@ class App extends Component {
             error: "Please enter a valid location",
             currently: '',
             hourly: '',
-            daily: ''
+            daily: '',
+            loading: false
 
           }))
         }

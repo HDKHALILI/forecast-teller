@@ -1,9 +1,10 @@
 import React from 'react';
 
 import Daily from './Daily';
+import Loading from './Loading';
 
 const Forecast = (props) => {
-  const { daily, location, error } = props;
+  const { daily, location, error, loading } = props;
   return (
     <div>
       <div className="daily-container">
@@ -14,7 +15,9 @@ const Forecast = (props) => {
         }
       </div>
       {daily.length === 0 &&
-        <p className="error">{error || "Enter location to get weather"}</p>
+        <div className="error">
+          {error || 'Enter location to get weather'}
+        </div>
       }
     </div>
 

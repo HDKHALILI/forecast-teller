@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   box-shadow: 0rem 0.2rem 0.3rem darken($light-grey, 10%);
 }
 
@@ -17,4 +17,10 @@
 .title:hover {
   color: darken($orange, 10%);
   transition: ease-in-out 200ms color;
+}
+
+@media (max-width: 41.4rem) {
+  .header {
+    flex-direction: column;
+  }
 }

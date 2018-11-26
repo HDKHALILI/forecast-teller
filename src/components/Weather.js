@@ -5,10 +5,10 @@ import Info from './Info';
 import ExtraDetails from './ExtraDetails';
 import Now from './Now';
 import Hourly from './Hourly';
+import Loading from './Loading';
 
 const Weather = (props) => {
-  const { location, currently, hourly, error } = props
-  console.log(error);
+  const { location, currently, hourly, error, loading } = props
   const { time, temperature, icon, windSpeed, humidity, rain, sunrise, sunset, summary } = currently;
   return (
     <div className="weather-container">
@@ -34,9 +34,9 @@ const Weather = (props) => {
                 humidity={data.humidity}/>))}
           </div>
         </div>
-      : <p className="error">
+      : <div className="error">
           {error || 'Enter location to get weather'}
-        </p>
+        </div>
     }
     </div>
   )
