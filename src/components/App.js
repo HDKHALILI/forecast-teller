@@ -26,7 +26,8 @@ class App extends Component {
     hourly: [],
     daily: [],
     error: '',
-    loading: true
+    loading: true,
+    unit: ''
   }
 
   componentDidMount() {
@@ -49,9 +50,9 @@ class App extends Component {
                 .slice(0, 7).map((hourly) => ({
                   time: hourly.time,
                   icon: hourly.icon,
-                  temperature: hourly.temperature,
+                  temperature: hourly.temperature.toFixed(1),
                   rain: Math.round(hourly.precipIntensity * 100) / 100,
-                  windSpeed: hourly.windSpeed,
+                  windSpeed: hourly.windSpeed.toFixed(1),
                   humidity: Math.floor(hourly.humidity * 100)
                 }))
 
@@ -59,21 +60,21 @@ class App extends Component {
                 .slice(0, 7).map((daily) => ({
                   time: daily.time,
                   icon: daily.icon,
-                  temperature: daily.temperatureHigh,
+                  temperature: daily.temperatureHigh.toFixed(1),
                   humidity: Math.floor(daily.humidity * 100),
                   rain: Math.round(daily.precipIntensity * 100) / 100,
                   sunrise: daily.sunriseTime,
                   sunset: daily.sunsetTime,
-                  windSpeed: daily.windSpeed,
+                  windSpeed: daily.windSpeed.toFixed(1),
                   summary: daily.summary
                 }))
 
               return {
                 currently: {
                   time: currently.time,
-                  temperature: currently.temperature,
+                  temperature: currently.temperature.toFixed(1),
                   icon: currently.icon,
-                  windSpeed: currently.windSpeed,
+                  windSpeed: currently.windSpeed.toFixed(1),
                   humidity: Math.floor(currently.humidity * 100),
                   rain: Math.round(currently.precipIntensity * 100) / 100,
                   summary: data.hourly.summary,
@@ -99,11 +100,17 @@ class App extends Component {
     
   }
 
+  handleUnitChange = (event) => {
+    const value = event.target.value;
+    this.setState(() => ({unit: value}))
+    console.log(value);
+  }
+
   render() {
     return (
       <Router>
         <div className="container">
-          <Header handleSubmit={this.handleSubmit}/>
+          <Header handleSubmit={this.handleSubmit} handleUnitChange={this.handleUnitChange}/>
           <Results data={this.state}/>
         </div>
       </Router>

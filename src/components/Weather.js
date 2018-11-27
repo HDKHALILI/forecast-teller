@@ -6,10 +6,12 @@ import ExtraDetails from './ExtraDetails';
 import Now from './Now';
 import Hourly from './Hourly';
 import Loading from './Loading';
+import convertTempUnit from '../utils/celsiusToFahrenheit';
 
 const Weather = (props) => {
-  const { location, currently, hourly, error, loading } = props
-  const { time, temperature, icon, windSpeed, humidity, rain, sunrise, sunset, summary } = currently;
+  const { location, currently, hourly, error, loading, unit } = props
+  const { time, icon, windSpeed, humidity, rain, sunrise, sunset, summary } = currently;
+  const temperature = convertTempUnit(unit, currently.temperature);
   return (
     <div className="weather-container">
     {temperature 
@@ -19,7 +21,7 @@ const Weather = (props) => {
             <SunDetails sunrise={sunrise} sunset={sunset} />
           </div>
           <div className="main">
-            <Now icon={icon} temperature={temperature}/>
+            <Now icon={icon} temperature={temperature} unit={unit}/>
             <ExtraDetails windSpeed={windSpeed} humidity={humidity} rain={rain} />
           </div>
           <div className="hourly-container">
@@ -31,7 +33,8 @@ const Weather = (props) => {
                 temperature={data.temperature}
                 rain={data.rain}
                 windSpeed={data.windSpeed}
-                humidity={data.humidity}/>))}
+                humidity={data.humidity}
+                unit={unit}/>))}
           </div>
         </div>
       : <div className="error">

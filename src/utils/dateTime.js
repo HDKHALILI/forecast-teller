@@ -39,7 +39,11 @@ export function getDate(timestamp) {
 
 export function getTime(timestamp) {
   const date = new Date(timestamp * 1000);
-  const hours = date.getHours();
+  let hours = date.getHours();
   const minutes = `0${date.getMinutes()}`.slice(-2);
+
+  if(hours < 10) {
+    hours = '0' + hours
+  }
   return `${hours}:${minutes}`
 }

@@ -6,7 +6,7 @@ import Forecast from './Forecast';
 
 class Results extends Component {
   render() {
-    const { location, currently, hourly, daily, error } = this.props.data;
+    const { location, currently, hourly, daily, error, unit} = this.props.data;
     return(
       <div className="results-container">
         <div className="nav">
@@ -24,12 +24,13 @@ class Results extends Component {
                 currently={currently}
                 location={location}
                 hourly={hourly}
-                error={error}/>
+                error={error}
+                unit={unit}/>
               )} />
           <Route 
             path="/forecast" 
             render={(props) => (
-              <Forecast {...props} daily={daily} location={location} error={error} />
+              <Forecast {...props} daily={daily} location={location} error={error} unit={unit} />
             )} />
         </Switch>
       </div>

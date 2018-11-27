@@ -8,29 +8,18 @@
 
 .pipe {
   color: darken($light-grey, 10%);
-  margin: 0 0.4rem;
+  margin: 0 0.3rem;
 }
 
 .sunrise i {
-  margin-left: 0.5rem;
+  margin-left: 0.3rem;
 }
 .sunset i {
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
 }
 
 @media (max-width: 36rem) {
   .sun-details {
-    width: 11rem !important;
-  }
-  .pipe {
-    margin: 0 0.3rem;
-  }
-
-  .sunrise i {
-    margin-left: 0.3rem;
-  }
-
-  .sunset i {
-    margin-right: 0.3rem;
+    width: 12rem !important;
   }
 }
