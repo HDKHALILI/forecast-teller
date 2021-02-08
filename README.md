@@ -1,11 +1,10 @@
 ## Forecast Teller
-A react app that use's Google's Geocoder api and Darksky api by [forecast.io](forecast.io)
+A react app that use's Google's Geocoder api and Darksky api.
 
 I have used scss for this project.
 
 The project is deployed on firebase.
 
-[Live Demo](https://forecast-teller.firebaseapp.com/)
 
 ### Feature:
 - current weather
